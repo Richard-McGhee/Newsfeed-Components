@@ -57,4 +57,7 @@ function MenuMaker(arr){
 
 let header = document.querySelector('.header')
 
-header.appendChild(MenuMaker(menuItems))
+// header.appendChild(MenuMaker(menuItems))
+
+let newMenu = MenuMaker(menuItems)
+header.appendChild(newMenu)
