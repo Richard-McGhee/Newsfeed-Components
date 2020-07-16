@@ -35,18 +35,26 @@ let menuItems = [
 function MenuMaker(arr){
 
   let mainDiv = document.createElement('div')
-  // mainDiv.classList.add('menu')
+  mainDiv.classList.add('menu')
 
-  let menuButton = document.createElement('button')
-  menuButton.classList.add('menu')
-  menuButton.textContent = 'MENU'
-  mainDiv.appendChild(menuButton)
-
+  let menuButton = document.querySelector('.menu-button')
+ 
   let uL = document.createElement('ul')
   mainDiv.appendChild(uL)
 
-  arr.forEach(function(item){
-    let newListItems = item.document.createElement('li')
+  arr.forEach(item => {
+    let newListItems = document.createElement('li')
+    newListItems.textContent = item
     uL.appendChild(newListItems)
   })
+
+  menuButton.addEventListener('click', (event) => {
+    mainDiv.classList.toggle('menu--open')
+  })
+
+  return mainDiv
 }
+
+let header = document.querySelector('.header')
+
+header.appendChild(MenuMaker(menuItems))
