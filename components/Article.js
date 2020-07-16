@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'A Test Title for Testing',
+    date: 'July 16, 2020',
+    firstParagraph: `Right, about that writing a new article thing `,
+
+    secondParagraph: `Indeed, more of this.`,
+
+    thirdParagraph: `Yes, and a final paragraph.`
   }
 ];
 
@@ -111,3 +120,45 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+function articleMaker(arr){
+  let articleDiv = document.createElement('div')
+  articleDiv.classList.add('article')
+
+  let articleH2 = document.createElement('h2')
+  let articleP = document.createElement('p')
+  let articleP2 = document.createElement('p')
+  let articleP3 = document.createElement('p')
+  let articleP4 = document.createElement('p')
+  let articleSpan = document.createElement('span')
+
+  articleH2.textContent = arr.title
+
+  articleP.classList.add('date')
+  articleP.textContent = arr.date
+  articleP2.textContent = arr.firstParagraph
+  articleP3.textContent = arr.secondParagraph
+  articleP4.textContent = arr.thirdParagraph
+
+  articleSpan.classList.add('expandButton')
+  articleSpan.textContent = '+'
+  articleSpan.addEventListener('click', (event) => {
+    articleDiv.classList.toggle('article-open')
+  })
+
+  articleDiv.appendChild(articleH2)
+  articleDiv.appendChild(articleP)
+  articleDiv.appendChild(articleP2)
+  articleDiv.appendChild(articleP3)
+  articleDiv.appendChild(articleP4)
+  articleDiv.appendChild(articleSpan)
+
+  return articleDiv
+}
+
+let newArticlesDiv = document.querySelector('.articles')
+
+data.forEach(item => {
+  newArticlesDiv.appendChild(articleMaker(item))
+})
+
